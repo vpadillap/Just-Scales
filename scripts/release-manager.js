@@ -149,10 +149,25 @@ async function run() {
 
         // Windows Build
         console.log(chalk.cyan(' Building Windows Portable (Electron)...'));
+
+        // Force disable signing to prevent "invalid zip" issues caused by signtool failures
+        // We only want a simple zip without code signing validation
+        const buildEnv = {
+            ...process.env,
+            CSC_IDENTITY_AUTO_DISCOVERY: 'false',
+            CSC_LINK: '',
+            WIN_CSC_LINK: '',
+            CSC_KEY_PASSWORD: ''
+        };
+
         // We only need to run electron-builder, assuming build is already done by web step? 
         // Actually electron:build runs build again. Let's run the full electron:build to be safe, or just electron-builder if we trust the dist.
         // package.json script: "electron:build": "tsc -b && vite build && tsc -p tsconfig.electron.json && electron-builder"
-        await execa('npm', ['run', 'electron:build'], { stdio: 'inherit', cwd: rootDir });
+        await execa('npm', ['run', 'electron:build'], {
+            stdio: 'inherit',
+            cwd: rootDir,
+            env: buildEnv
+        });
         console.log(chalk.green('✔ Windows Build Complete'));
 
     } catch (error) {
