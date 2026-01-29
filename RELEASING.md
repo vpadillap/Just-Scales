@@ -47,7 +47,7 @@ gh release create vX.Y.Z --title "vX.Y.Z" --notes "See CHANGELOG.md for details.
 After the release is created on GitHub:
 1.  Locate the build artifacts in the `release/` directory (e.g., `Just Scales Setup 1.0.0.exe`).
 2.  Edit the release on GitHub.
-3.  Upload the installer file(s) as assets.
+3.  Upload the portable executable file(s) as assets.
 4.  Save the release.
 
 ## Build Verification

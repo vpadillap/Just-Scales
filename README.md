@@ -14,8 +14,9 @@
 
 ### Windows
 1.  Go to the [Latest Release](https://github.com/user/JustScales/releases/latest) page.
-2.  Download the **Installer** (`.exe`).
-3.  Run the installer.
+2.  Download the **Portable Executable** (`.exe`).
+3.  Run the file (no installation required).
+4.  *(Optional)* Move it to your preferred folder or desktop.
 
 > **Note:** If Windows SmartScreen prevents execution ("Windows protected your PC"):
 > 1. Click **More info**.

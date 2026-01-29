@@ -7,7 +7,7 @@ The project MUST provide compiled binaries for at least the primary development 
 The `package.json` MUST contain explicit `build` configuration including:
 -   `appId`: Unique identifier (e.g., `com.example.justscales`).
 -   `productName`: "Just Scales".
--   `win`: Target `nsis` (Installer) and `portable` (optional).
+-   `win`: Target `portable` (Standalone Executable) to minimize dependency complexity.
 -   `directories`: Output to `dist` or similar.
 
 ### Release Workflow Addition

@@ -1,7 +1,7 @@
 {
   "name": "justscales",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist-electron/main.js",
   "repository": {
@@ -27,13 +27,8 @@
       "output": "release"
     },
     "win": {
+      "target": "portable",
       "icon": "resources/icon.ico"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
     },
     "files": [
       "dist/**/*",
