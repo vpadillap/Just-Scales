@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.4] - 2026-01-29
+### Changed
+-   Switched to **ZIP Distribution** to simplify installation and avoid SmartScreen blocks.
+-   Version bump.
+
 ## [1.0.3] - 2026-01-29
 ### Changed
 -   Switched from NSIS Installer to **Portable Executable** (`.exe`) for Windows distribution.

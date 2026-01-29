@@ -14,11 +14,11 @@
 
 ### Windows
 1.  Go to the [Latest Release](https://github.com/user/JustScales/releases/latest) page.
-2.  Download the **Portable Executable** (`.exe`).
-3.  Run the file (no installation required).
-4.  *(Optional)* Move it to your preferred folder or desktop.
+2.  Download the **ZIP Archive** (`.zip`).
+3.  Extract the ZIP file to a folder of your choice.
+4.  Run `Just Scales.exe`.
 
-> **Note:** If Windows SmartScreen prevents execution ("Windows protected your PC"):
+> **Note:** If Windows SmartScreen prevents execution:
 > 1. Click **More info**.
 > 2. Click **Run anyway**.
 > *This happens because the app is open-source and not digitally signed with a paid certificate yet.*

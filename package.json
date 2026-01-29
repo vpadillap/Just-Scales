@@ -1,7 +1,7 @@
 {
   "name": "justscales",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "main": "dist-electron/main.js",
   "repository": {
@@ -27,7 +27,7 @@
       "output": "release"
     },
     "win": {
-      "target": "portable",
+      "target": "zip",
       "icon": "resources/icon.ico"
     },
     "files": [
