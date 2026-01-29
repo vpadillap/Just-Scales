@@ -15,7 +15,10 @@
     "preview": "vite preview",
     "electron:dev": "concurrently \"npm run dev\" \"wait-on tcp:5173 && tsc -p tsconfig.electron.json && electron .\"",
     "electron:build": "tsc -b && vite build && tsc -p tsconfig.electron.json && electron-builder",
-    "release:verify": "npm run lint && npm run build"
+    "release:verify": "npm run lint && npm run build",
+    "android:init": "cap add android",
+    "android:sync": "cap sync android",
+    "android:open": "cap open android"
   },
   "description": "Simple vocal practicing tool for singers",
   "author": "Victor Padilla Prado (Acuario)",
@@ -37,6 +40,9 @@
     ]
   },
   "dependencies": {
+    "@capacitor/android": "^8.0.2",
+    "@capacitor/cli": "^8.0.2",
+    "@capacitor/core": "^8.0.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.29.2",
     "react": "^19.2.0",

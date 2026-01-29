@@ -58,3 +58,21 @@ npm run build
 # OR
 npm run electron:build
 ```
+
+## Android Release
+1.  Run the build:
+    ```bash
+    npm run build
+    npm run android:sync
+    ```
+2.  Open in Android Studio:
+    ```bash
+    npm run android:open
+    ```
+3.  In Android Studio:
+    -   Go to **Build** -> **Generate Signed Bundle / APK**.
+    -   Select **APK** or **Android App Bundle**.
+    -   Create a new keystore key (keep this safe!).
+    -   Build the `release` variant.
+4.  Locate the output (usually `android/app/release/app-release.apk`).
+5.  Upload this to GitHub Releases or Google Play Console.

@@ -33,3 +33,7 @@ Thumbs.db
 .gemini/
 .antigravity/
 brain/
+
+# Android
+android/app/build/
+android/.gradle

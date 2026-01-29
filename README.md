@@ -23,7 +23,12 @@
 > 2. Click **Run anyway**.
 > *This happens because the app is open-source and not digitally signed with a paid certificate yet.*
 >
-> **Important:** If you have **Smart App Control** ("Bloqueo inteligente de aplicaciones") enabled on Windows, it may block the application entirely without an option to run. You may need to disable it or whitelist the app to run it.
+> **Important:** If you have **Smart App Control** enabled on Windows, it may block the application entirely without an option to run. You may need to disable it or whitelist the app to run it.
+
+### Android
+1.  Download the `.apk` from the [Latest Release](https://github.com/user/JustScales/releases/latest).
+2.  Install it on your device (you may need to enable "Install from Unknown Sources").
+    *Alternatively, builds will be available on the Play Store in the future.*
 
 ### Mac / Linux
 Currently, you must build from source (see Development).
