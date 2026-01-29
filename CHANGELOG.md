@@ -6,18 +6,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-### Added
--   Initial open-source preparation.
--   AGPLv3 License.
--   Documentation (README, RELEASING, CONTRIBUTING).
--   Responsive UI and Off-Canvas Sidebar.
--   Rossini Scale consistency fix.
 
-## [1.0.0] - 2026-01-28
+## [1.0.0] - 2026-01-29
 ### Added
--   Core application release (Electron + React).
--   Scale playback engine.
--   Visualizer.
+-   Initial open-source release (AGPLv3).
+-   Core application (Electron + React) with Scale Playback Engine.
+-   Visualizers (Piano, Dot Graph).
+-   Responsive UI with Off-Canvas Sidebar.
+-   Documentation (README, RELEASING, CONTRIBUTING).
+-   Build configuration for Windows Installer (NSIS).
+
+### Fixed
+-   Rossini Scale consistency.
 
 [Unreleased]: https://github.com/user/JustScales/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/user/JustScales/releases/tag/v1.0.0

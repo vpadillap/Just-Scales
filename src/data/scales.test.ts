@@ -22,6 +22,6 @@ describe('Scale Logic', () => {
         const major5 = SCALES.find(s => s.id === 'f-maj-5')
         expect(major5).toBeDefined()
         expect(major5?.category).toBe('Foundation')
-        expect(major5?.intervals.length).toBeGreaterThan(0)
+        expect(major5?.pattern.length).toBeGreaterThan(0)
     })
 })

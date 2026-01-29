@@ -5,7 +5,7 @@ import { useAudioStore } from '@/stores/useAudioStore'
 
 // Helper to calculate unrolled sequence steps
 // Should match logic in runLoop!
-const getUnrolledSequence = (scale: Scale, currentRoot: string): { note: string, interval: number }[] => {
+const getUnrolledSequence = (scale: Scale): { note: string, interval: number }[] => {
     const repeatCount = scale.repeatOnRoot || 1
     const seq: { note: string, interval: number }[] = []
 
@@ -29,7 +29,7 @@ export const DotGraphVisualizer: React.FC<DotGraphVisualizerProps> = ({ scale })
 
     // 1. Calculate Positions
     const dots = useMemo(() => {
-        const sequence = getUnrolledSequence(scale, currentRoot)
+        const sequence = getUnrolledSequence(scale)
 
         // Find Min/Max for Y-Axis Normalization
         const intervals = sequence.map(s => s.interval)

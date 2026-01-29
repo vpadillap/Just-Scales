@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "NodeNext",
         "noEmit": false,
         "outDir": "dist-electron",
         "target": "ESNext",
-        "moduleResolution": "Node",
+        "moduleResolution": "NodeNext",
         "skipLibCheck": true,
         "strict": true,
         "isolatedModules": true
