@@ -29,6 +29,7 @@ Thumbs.db
 
 # Agentic / AI
 .agent/
+.agents/
 .gemini/
 .antigravity/
 brain/
