@@ -22,6 +22,8 @@
 > 1. Click **More info**.
 > 2. Click **Run anyway**.
 > *This happens because the app is open-source and not digitally signed with a paid certificate yet.*
+>
+> **Important:** If you have **Smart App Control** ("Bloqueo inteligente de aplicaciones") enabled on Windows, it may block the application entirely without an option to run. You may need to disable it or whitelist the app to run it.
 
 ### Mac / Linux
 Currently, you must build from source (see Development).
