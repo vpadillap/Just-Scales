@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-01-29
+### Changed
+-   Fixed application entry point (`main`) configuration to ensure correct metadata patching in executables.
+-   Version bump.
+
 ## [1.0.1] - 2026-01-29
 ### Changed
 -   Updated release metadata (Organization: Acuario).
