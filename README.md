@@ -17,6 +17,11 @@
 2.  Download the **Installer** (`.exe`).
 3.  Run the installer.
 
+> **Note:** If Windows SmartScreen prevents execution ("Windows protected your PC"):
+> 1. Click **More info**.
+> 2. Click **Run anyway**.
+> *This happens because the app is open-source and not digitally signed with a paid certificate yet.*
+
 ### Mac / Linux
 Currently, you must build from source (see Development).
 

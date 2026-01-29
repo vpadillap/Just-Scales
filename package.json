@@ -1,7 +1,7 @@
 {
   "name": "justscales",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "repository": {
     "type": "git",
@@ -17,10 +17,11 @@
     "release:verify": "npm run lint && npm run build"
   },
   "description": "Simple vocal practicing tool for singers",
-  "author": "Victor Padilla Prado",
+  "author": "Victor Padilla Prado (Acuario)",
   "build": {
     "appId": "com.justscales.app",
     "productName": "Just Scales",
+    "copyright": "Copyright © 2026 Victor Padilla Prado (Acuario)",
     "directories": {
       "output": "release"
     },
