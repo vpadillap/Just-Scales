@@ -163,12 +163,15 @@ async function run() {
     // 5. Collect Artifacts
     console.log(chalk.yellow('\n📦 Collecting Artifacts...'));
 
+    // Wait for file handles to be released
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
     const releaseDir = path.join(rootDir, 'release', `v${newVersion}`);
     await fs.ensureDir(releaseDir);
 
     // Move Android APK
-    // Default path: android/app/build/outputs/apk/release/app-release-unsigned.apk
-    const apkSource = path.join(rootDir, 'android', 'app', 'build', 'outputs', 'apk', 'release', 'app-release-unsigned.apk');
+    // Default path: android/app/build/outputs/apk/release/app-release.apk
+    const apkSource = path.join(rootDir, 'android', 'app', 'build', 'outputs', 'apk', 'release', 'app-release.apk');
     const apkDest = path.join(releaseDir, `JustScales-${newVersion}.apk`);
 
     if (await fs.pathExists(apkSource)) {
@@ -192,11 +195,18 @@ async function run() {
         if (file.endsWith('.exe') || file.endsWith('.zip')) {
             const src = path.join(winReleaseRoot, file);
             const dest = path.join(releaseDir, file);
-            // Check if it's a file before moving (to avoid directories like win-unpacked)
-            const stat = await fs.stat(src);
-            if (stat.isFile()) {
-                await fs.move(src, dest, { overwrite: true });
-                console.log(chalk.green(`✔ Moved ${file}`));
+
+            // Check if it's a file before moving
+            try {
+                const stat = await fs.stat(src);
+                if (stat.isFile()) {
+                    // Wait a bit more for file locks if needed, or retry?
+                    // actually the global delay above should cover it.
+                    await fs.move(src, dest, { overwrite: true });
+                    console.log(chalk.green(`✔ Moved ${file}`));
+                }
+            } catch (err) {
+                console.warn(chalk.yellow(`⚠ Could not move ${file}: ${err.message}`));
             }
         }
     }

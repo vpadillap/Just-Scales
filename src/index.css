@@ -13,6 +13,15 @@
   --color-neon-pink-900: #fdd4e6;
 }
 
+:root {
+  --safe-area-top: env(safe-area-inset-top, 0px);
+}
+
+/* Windows specific: Reserve space for native window controls if frameless */
+body.platform-win32 .app-drag-region {
+   padding-right: 140px; /* Space for minimize/maximize/close */
+}
+
 /* For Electron Window Dragging */
 .app-drag-region {
   -webkit-app-region: drag;
