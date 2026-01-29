@@ -55,6 +55,13 @@ Start the Electron app in development mode with hot-reload:
 npm run electron:dev
 ```
 
+### Deployment
+To build all platforms (Windows & Android) and prepare a release:
+```bash
+npm run release
+```
+Follow the interactive prompts.
+
 ### Building
 To create the executable for your OS:
 ```bash

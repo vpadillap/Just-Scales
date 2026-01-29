@@ -12,36 +12,40 @@ We use [Semantic Versioning 2.0.0](https://semver.org/).
 
 ## Release Workflow
 
-To perform a release, follow these steps exactly.
-
-### 1. Update Changelog
-1.  Open `CHANGELOG.md`.
-2.  Move items from `[Unreleased]` to a new version section `[X.Y.Z] - YYYY-MM-DD`.
-3.  Ensure links at the bottom of the file are updated for the diff comparison.
-
-### 2. Commit Documents
+### 1. Unified Automated Release
+Run the release script:
 ```bash
-git add CHANGELOG.md
-git commit -m "docs: release vX.Y.Z"
+npm run release
 ```
+This script will interactively:
+1.  Ask for the version bump (Patch/Minor/Major).
+2.  Update `package.json`, `android/app/build.gradle` (code & name), and `CHANGELOG.md`.
+3.  Run all builds:
+    -   Web (`vite`)
+    -   Windows (`electron-builder`)
+    -   Android (`gradlew assembleRelease`)
+4.  Collect all artifacts into `release/vX.Y.Z/`.
+5.  Commit and Tag the release.
 
-### 3. Create Tag
-Create an **annotated** tag.
-```bash
-git tag -a vX.Y.Z -m "Release vX.Y.Z"
-```
+### 2. Push & Publish
+After the script finishes:
+1.  Push the commit and tags:
+    ```bash
+    git push && git push --tags
+    ```
+2.  Create the release on GitHub (step 5 below).
 
-### 4. Push
-Push both the commit and the tag.
-```bash
-git push && git push --tags
-```
-
-### 5. GitHub Release
-Create the release on GitHub. You can use the CLI or the web interface.
+### 3. GitHub Release
+Create the release on GitHub.
 ```bash
 gh release create vX.Y.Z --title "vX.Y.Z" --notes "See CHANGELOG.md for details."
 ```
+
+### 4. Attach Binaries
+Upload the artifacts found in `release/vX.Y.Z/`:
+-   `JustScales-X.Y.Z-win.zip` (Windows)
+-   `JustScales-X.Y.Z.exe` (Windows)
+-   `JustScales-X.Y.Z.apk` (Android)
 
 ### 6. Attach Binaries
 After the release is created on GitHub:

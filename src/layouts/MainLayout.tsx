@@ -78,7 +78,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategor
     return (
         <div className="h-screen w-full bg-surface-base text-text-primary overflow-hidden flex flex-col font-sans select-none relative">
             {/* Title Bar Drag Region */}
-            <div className="h-[50px] w-full bg-surface-base fixed top-0 left-0 z-40 flex items-center px-4 app-drag-region border-b border-surface-mid justify-between md:justify-start">
+            <div className="h-[50px] w-full bg-surface-base fixed top-0 left-0 z-40 flex items-center px-4 app-drag-region border-b border-surface-mid justify-between md:justify-start pt-[env(safe-area-inset-top)] h-[calc(50px+env(safe-area-inset-top))]">
                 <span className="text-lg font-black text-neon-pink-500 tracking-widest uppercase md:mr-4">JUST SCALES</span>
 
                 {/* Mobile Menu Toggle */}
@@ -92,7 +92,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategor
                 </button>
             </div>
 
-            <div className="flex-1 flex pt-[50px] min-h-0 relative">
+            <div className="flex-1 flex pt-[calc(50px+env(safe-area-inset-top))] min-h-0 relative">
                 {/* Desktop Sidebar */}
                 <aside className="hidden md:flex w-64 bg-surface-base border-r border-surface-mid flex-col h-full min-h-0 shrink-0">
                     <SidebarContent />
