@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "noEmit": false,
+        "outDir": "dist-electron",
+        "target": "ESNext",
+        "moduleResolution": "Node",
+        "skipLibCheck": true,
+        "strict": true,
+        "isolatedModules": true
+    },
+    "include": [
+        "electron/**/*"
+    ]
+}
