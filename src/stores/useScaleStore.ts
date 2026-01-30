@@ -70,7 +70,8 @@ export const useScaleStore = create<ScaleState>()(
 
             deleteCategory: (category) => {
                 set((state) => ({
-                    categories: state.categories.filter(c => c !== category)
+                    categories: state.categories.filter(c => c !== category),
+                    scales: state.scales.filter(s => s.category !== category)
                 }))
             },
 

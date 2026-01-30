@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useScaleStore } from '../stores/useScaleStore'
+import { useScaleStore, DEFAULT_CATEGORIES } from '../stores/useScaleStore'
 
 interface CategoryManagerProps {
     onClose: () => void
 }
-
-const DEFAULT_CATEGORIES = ['Major', 'Minor', 'Pentatonic', 'Blues', 'Modes']
 
 export const CategoryManager: React.FC<CategoryManagerProps> = ({ onClose }) => {
     const { categories, addCategory, deleteCategory } = useScaleStore()

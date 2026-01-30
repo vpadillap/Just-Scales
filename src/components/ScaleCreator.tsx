@@ -10,7 +10,7 @@ import { twMerge } from 'tailwind-merge'
 import * as Tone from 'tone'
 
 interface ScaleCreatorProps {
-    existingScale?: StoreScale
+    existingScale?: DataScale
     onClose: () => void
     onSave?: () => void
 }
@@ -343,16 +343,16 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
                             <div className="flex gap-4">
                                 <button
                                     onClick={() => addEvent('note')}
-                                    className="flex-1 py-3 rounded-xl border border-slate-200 text-slate-600 font-bold text-sm hover:border-neon-pink-500 hover:text-neon-pink-600 transition-colors flex items-center justify-center gap-2"
+                                    className="flex-1 py-4 rounded-xl bg-neon-pink-50 border-2 border-neon-pink-200 text-neon-pink-700 font-black text-sm hover:bg-neon-pink-100 hover:border-neon-pink-300 transition-all flex items-center justify-center gap-2 shadow-sm active:scale-95 uppercase tracking-wide"
                                 >
-                                    <span className="text-lg leading-none">+</span>
+                                    <span className="text-xl leading-none">+</span>
                                     Add Note
                                 </button>
                                 <button
                                     onClick={() => addEvent('rest')}
-                                    className="flex-1 py-3 rounded-xl border border-slate-200 text-slate-400 font-bold text-sm hover:border-slate-400 hover:text-slate-600 transition-colors flex items-center justify-center gap-2"
+                                    className="flex-1 py-4 rounded-xl bg-slate-100 border-2 border-slate-200 text-slate-600 font-black text-sm hover:bg-slate-200 hover:border-slate-300 transition-all flex items-center justify-center gap-2 shadow-sm active:scale-95 uppercase tracking-wide"
                                 >
-                                    <span className="text-lg leading-none">+</span>
+                                    <span className="text-xl leading-none">+</span>
                                     Add Rest
                                 </button>
                             </div>

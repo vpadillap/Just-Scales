@@ -1,3 +1,5 @@
+import type { NoteEvent } from '../types'
+
 export interface ScaleNote {
     interval: number
     duration: string // Tone.js duration (4n, 8n, 16n, etc)
@@ -11,6 +13,10 @@ export interface Scale {
     repeatOnRoot?: number // Number of times to loop on the same root before transposing
     description: string
     detailedInstructions: string
+    // Hybrid support for custom scales
+    isCustom?: boolean
+    notes?: NoteEvent[] // Strict typing
+    createdAt?: number
 }
 
 export type FunctionalCategory =
