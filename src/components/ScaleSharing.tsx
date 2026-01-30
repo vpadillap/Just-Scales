@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
-import type { Scale } from '../types'
+import type { Scale as DataScale } from '../data/scales'
 import { motion } from 'framer-motion'
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera'
 import jsQR from 'jsqr'
@@ -8,12 +8,12 @@ import jsQR from 'jsqr'
 // --- EXPORT COMPONENT ---
 
 interface ScaleExportProps {
-    scale: Scale
+    scale: DataScale
     onClose: () => void
 }
 
 export const ScaleExport: React.FC<ScaleExportProps> = ({ scale, onClose }) => {
-    const scaleJson = JSON.stringify(scale)
+    const scaleJson = JSON.stringify({ ...scale, notes: scale.notes || [] })
     const [copied, setCopied] = useState(false)
 
     const handleCopy = () => {
@@ -74,7 +74,7 @@ export const ScaleExport: React.FC<ScaleExportProps> = ({ scale, onClose }) => {
 // --- IMPORT COMPONENT ---
 
 interface ScaleImportProps {
-    onImport: (scale: Scale) => void
+    onImport: (scale: DataScale) => void
     onClose: () => void
 }
 
@@ -90,7 +90,7 @@ export const ScaleImport: React.FC<ScaleImportProps> = ({ onImport, onClose }) =
             if (!data.name || !data.notes || !Array.isArray(data.notes)) {
                 throw new Error("Invalid scale format")
             }
-            const newScale: Scale = {
+            const newScale: DataScale = {
                 ...data,
                 id: crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).substring(2),
                 isCustom: true,

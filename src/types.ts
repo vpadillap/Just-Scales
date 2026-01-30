@@ -8,7 +8,7 @@ export interface Scale {
     id: string; // UUID
     name: string;
     category: string;
-    notes: NoteEvent[];
+    notes?: NoteEvent[];
     isCustom: boolean; // true for user-created
     createdAt: number;
 }
