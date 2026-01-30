@@ -1,0 +1,890 @@
+[
+  {
+    "name": "@babel/runtime",
+    "version": "7.28.6",
+    "license": "MIT",
+    "author": "The Babel Team",
+    "repository": "https://github.com/babel/babel",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@capacitor/android",
+    "version": "8.0.2",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/capacitor",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@capacitor/camera",
+    "version": "8.0.0",
+    "license": "MIT",
+    "author": "Ionic",
+    "repository": "https://github.com/ionic-team/capacitor-plugins",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@capacitor/cli",
+    "version": "8.0.2",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/capacitor",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@capacitor/core",
+    "version": "8.0.2",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/capacitor",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/cli-framework-output",
+    "version": "2.2.8",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/utils-array",
+    "version": "2.1.6",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/utils-fs",
+    "version": "3.1.7",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/utils-object",
+    "version": "2.1.6",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/utils-process",
+    "version": "2.1.12",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/utils-stream",
+    "version": "3.1.7",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/utils-subprocess",
+    "version": "3.0.1",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@ionic/utils-terminal",
+    "version": "2.3.5",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/ionic-cli",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@isaacs/balanced-match",
+    "version": "4.0.1",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/isaacs/balanced-match",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@isaacs/brace-expansion",
+    "version": "5.0.0",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@isaacs/fs-minipass",
+    "version": "4.0.1",
+    "license": "ISC",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/npm/fs-minipass",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@types/fs-extra",
+    "version": "8.1.5",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@types/node",
+    "version": "24.10.9",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@types/react",
+    "version": "19.2.10",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@types/slice-ansi",
+    "version": "4.0.0",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "@xmldom/xmldom",
+    "version": "0.8.11",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/xmldom/xmldom",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "ansi-regex",
+    "version": "5.0.1",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/chalk/ansi-regex",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "ansi-styles",
+    "version": "4.3.0",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/chalk/ansi-styles",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "astral-regex",
+    "version": "2.0.0",
+    "license": "MIT",
+    "author": "Kevin Mårtensson",
+    "repository": "https://github.com/kevva/astral-regex",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "at-least-node",
+    "version": "1.0.0",
+    "license": "ISC",
+    "author": "Ryan Zimmerman",
+    "repository": "https://github.com/RyanZim/at-least-node",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "automation-events",
+    "version": "7.1.15",
+    "license": "MIT",
+    "author": "Christoph Guttandin",
+    "repository": "https://github.com/chrisguttandin/automation-events",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "base64-js",
+    "version": "1.5.1",
+    "license": "MIT",
+    "author": "T. Jameson Little",
+    "repository": "https://github.com/beatgammit/base64-js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "big-integer",
+    "version": "1.6.52",
+    "license": "Unlicense",
+    "author": "Peter Olson",
+    "repository": "https://github.com/peterolson/BigInteger.js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "bplist-parser",
+    "version": "0.3.2",
+    "license": "MIT",
+    "author": "Joe Ferner",
+    "repository": "https://github.com/nearinfinity/node-bplist-parser",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "buffer-crc32",
+    "version": "0.2.13",
+    "license": "MIT",
+    "author": "Brian J. Brennan",
+    "repository": "https://github.com/brianloveswords/buffer-crc32",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "chownr",
+    "version": "3.0.0",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/chownr",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "clsx",
+    "version": "2.1.1",
+    "license": "MIT",
+    "author": "Luke Edwards",
+    "repository": "https://github.com/lukeed/clsx",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "color-convert",
+    "version": "2.0.1",
+    "license": "MIT",
+    "author": "Heather Arthur",
+    "repository": "https://github.com/Qix-/color-convert",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "color-name",
+    "version": "1.1.4",
+    "license": "MIT",
+    "author": "DY",
+    "repository": "https://github.com/colorjs/color-name",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "commander",
+    "version": "12.1.0",
+    "license": "MIT",
+    "author": "TJ Holowaychuk",
+    "repository": "https://github.com/tj/commander.js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "cross-spawn",
+    "version": "7.0.6",
+    "license": "MIT",
+    "author": "André Cruz",
+    "repository": "https://github.com/moxystudio/node-cross-spawn",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "csstype",
+    "version": "3.2.3",
+    "license": "MIT",
+    "author": "Fredrik Nicol",
+    "repository": "https://github.com/frenic/csstype",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "debug",
+    "version": "4.4.3",
+    "license": "MIT",
+    "author": "Josh Junon",
+    "repository": "https://github.com/debug-js/debug",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "define-lazy-prop",
+    "version": "2.0.0",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/define-lazy-prop",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "elementtree",
+    "version": "0.1.7",
+    "license": "Apache-2.0",
+    "author": "Rackspace US, Inc.",
+    "repository": "https://github.com/racker/node-elementtree",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "emoji-regex",
+    "version": "8.0.0",
+    "license": "MIT",
+    "author": "Mathias Bynens",
+    "repository": "https://github.com/mathiasbynens/emoji-regex",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "env-paths",
+    "version": "2.2.1",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/env-paths",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "fd-slicer",
+    "version": "1.1.0",
+    "license": "MIT",
+    "author": "Andrew Kelley",
+    "repository": "https://github.com/andrewrk/node-fd-slicer",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "framer-motion",
+    "version": "12.29.2",
+    "license": "MIT",
+    "author": "Matt Perry",
+    "repository": "https://github.com/motiondivision/motion",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "fs-extra",
+    "version": "11.3.3",
+    "license": "MIT",
+    "author": "JP Richardson",
+    "repository": "https://github.com/jprichardson/node-fs-extra",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "fs-extra",
+    "version": "9.1.0",
+    "license": "MIT",
+    "author": "JP Richardson",
+    "repository": "https://github.com/jprichardson/node-fs-extra",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "glob",
+    "version": "13.0.0",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/node-glob",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "graceful-fs",
+    "version": "4.2.11",
+    "license": "ISC",
+    "author": "Unknown",
+    "repository": "https://github.com/isaacs/node-graceful-fs",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "inherits",
+    "version": "2.0.4",
+    "license": "ISC",
+    "author": "Unknown",
+    "repository": "https://github.com/isaacs/inherits",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "ini",
+    "version": "4.1.3",
+    "license": "ISC",
+    "author": "GitHub Inc.",
+    "repository": "https://github.com/npm/ini",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "is-docker",
+    "version": "2.2.1",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/is-docker",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "is-fullwidth-code-point",
+    "version": "3.0.0",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/is-fullwidth-code-point",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "is-wsl",
+    "version": "2.2.0",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/is-wsl",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "isexe",
+    "version": "2.0.0",
+    "license": "ISC",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/isexe",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "jsonfile",
+    "version": "6.2.0",
+    "license": "MIT",
+    "author": "JP Richardson",
+    "repository": "https://github.com/jprichardson/node-jsonfile",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "jsqr",
+    "version": "1.4.0",
+    "license": "Apache-2.0",
+    "author": "Unknown",
+    "repository": "https://github.com/cozmo/jsQR",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "kleur",
+    "version": "3.0.3",
+    "license": "MIT",
+    "author": "Luke Edwards",
+    "repository": "https://github.com/lukeed/kleur",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "kleur",
+    "version": "4.1.5",
+    "license": "MIT",
+    "author": "Luke Edwards",
+    "repository": "https://github.com/lukeed/kleur",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "lru-cache",
+    "version": "11.2.5",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/node-lru-cache",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "minimatch",
+    "version": "10.1.1",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/minimatch",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "minipass",
+    "version": "7.1.2",
+    "license": "ISC",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/minipass",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "minizlib",
+    "version": "3.1.0",
+    "license": "MIT",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/minizlib",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "motion-dom",
+    "version": "12.29.2",
+    "license": "MIT",
+    "author": "Matt Perry",
+    "repository": "https://github.com/motiondivision/motion",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "motion-utils",
+    "version": "12.29.2",
+    "license": "MIT",
+    "author": "Matt Perry",
+    "repository": "https://github.com/motiondivision/motion",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "ms",
+    "version": "2.1.3",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/vercel/ms",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "native-run",
+    "version": "2.0.3",
+    "license": "MIT",
+    "author": "Ionic Team",
+    "repository": "https://github.com/ionic-team/native-run",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "open",
+    "version": "8.4.2",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/open",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "package-json-from-dist",
+    "version": "1.0.1",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/package-json-from-dist",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "path-key",
+    "version": "3.1.1",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/path-key",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "path-scurry",
+    "version": "2.0.1",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/path-scurry",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "pend",
+    "version": "1.2.0",
+    "license": "MIT",
+    "author": "Andrew Kelley",
+    "repository": "https://github.com/andrewrk/node-pend",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "plist",
+    "version": "3.1.0",
+    "license": "MIT",
+    "author": "Nathan Rajlich",
+    "repository": "https://github.com/TooTallNate/node-plist",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "prompts",
+    "version": "2.4.2",
+    "license": "MIT",
+    "author": "Terkel Gjervig",
+    "repository": "https://github.com/terkelg/prompts",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "qrcode.react",
+    "version": "4.2.0",
+    "license": "ISC",
+    "author": "Paul O’Shannessy",
+    "repository": "https://github.com/zpao/qrcode.react",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "react-dom",
+    "version": "19.2.4",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/facebook/react",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "react",
+    "version": "19.2.4",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/facebook/react",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "readable-stream",
+    "version": "3.6.2",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/nodejs/readable-stream",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "rimraf",
+    "version": "6.1.2",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/rimraf",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "safe-buffer",
+    "version": "5.2.1",
+    "license": "MIT",
+    "author": "Feross Aboukhadijeh",
+    "repository": "https://github.com/feross/safe-buffer",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "sax",
+    "version": "1.1.4",
+    "license": "ISC",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/sax-js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "sax",
+    "version": "1.4.4",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/sax-js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "scheduler",
+    "version": "0.27.0",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/facebook/react",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "semver",
+    "version": "7.7.3",
+    "license": "ISC",
+    "author": "GitHub Inc.",
+    "repository": "https://github.com/npm/node-semver",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "shebang-command",
+    "version": "2.0.0",
+    "license": "MIT",
+    "author": "Kevin Mårtensson",
+    "repository": "https://github.com/kevva/shebang-command",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "shebang-regex",
+    "version": "3.0.0",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/shebang-regex",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "signal-exit",
+    "version": "3.0.7",
+    "license": "ISC",
+    "author": "Ben Coe",
+    "repository": "https://github.com/tapjs/signal-exit",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "sisteransi",
+    "version": "1.0.5",
+    "license": "MIT",
+    "author": "Terkel Gjervig",
+    "repository": "https://github.com/terkelg/sisteransi",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "slice-ansi",
+    "version": "4.0.0",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/chalk/slice-ansi",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "split2",
+    "version": "4.2.0",
+    "license": "ISC",
+    "author": "Matteo Collina",
+    "repository": "https://github.com/mcollina/split2",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "standardized-audio-context",
+    "version": "25.3.77",
+    "license": "MIT",
+    "author": "Christoph Guttandin",
+    "repository": "https://github.com/chrisguttandin/standardized-audio-context",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "string-width",
+    "version": "4.2.3",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/string-width",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "string_decoder",
+    "version": "1.3.0",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/nodejs/string_decoder",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "strip-ansi",
+    "version": "6.0.1",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/chalk/strip-ansi",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "tailwind-merge",
+    "version": "3.4.0",
+    "license": "MIT",
+    "author": "Dany Castillo",
+    "repository": "https://github.com/dcastil/tailwind-merge",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "tar",
+    "version": "7.5.7",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/node-tar",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "through2",
+    "version": "4.0.2",
+    "license": "MIT",
+    "author": "Rod Vagg",
+    "repository": "https://github.com/rvagg/through2",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "tone",
+    "version": "15.1.22",
+    "license": "MIT",
+    "author": "Yotam Mann",
+    "repository": "https://github.com/Tonejs/Tone.js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "tree-kill",
+    "version": "1.2.2",
+    "license": "MIT",
+    "author": "Peteris Krumins",
+    "repository": "https://github.com/pkrumins/node-tree-kill",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "tslib",
+    "version": "2.8.1",
+    "license": "0BSD",
+    "author": "Microsoft Corp.",
+    "repository": "https://github.com/Microsoft/tslib",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "undici-types",
+    "version": "7.16.0",
+    "license": "MIT",
+    "author": "Unknown",
+    "repository": "https://github.com/nodejs/undici",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "universalify",
+    "version": "2.0.1",
+    "license": "MIT",
+    "author": "Ryan Zimmerman",
+    "repository": "https://github.com/RyanZim/universalify",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "untildify",
+    "version": "4.0.0",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/sindresorhus/untildify",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "util-deprecate",
+    "version": "1.0.2",
+    "license": "MIT",
+    "author": "Nathan Rajlich",
+    "repository": "https://github.com/TooTallNate/util-deprecate",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "which",
+    "version": "2.0.2",
+    "license": "ISC",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/node-which",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "wrap-ansi",
+    "version": "7.0.0",
+    "license": "MIT",
+    "author": "Sindre Sorhus",
+    "repository": "https://github.com/chalk/wrap-ansi",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "xml2js",
+    "version": "0.6.2",
+    "license": "MIT",
+    "author": "Marek Kubica",
+    "repository": "https://github.com/Leonidas-from-XIV/node-xml2js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "xmlbuilder",
+    "version": "11.0.1",
+    "license": "MIT",
+    "author": "Ozgur Ozcitak",
+    "repository": "https://github.com/oozcitak/xmlbuilder-js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "xmlbuilder",
+    "version": "15.1.1",
+    "license": "MIT",
+    "author": "Ozgur Ozcitak",
+    "repository": "https://github.com/oozcitak/xmlbuilder-js",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "yallist",
+    "version": "5.0.0",
+    "license": "BlueOak-1.0.0",
+    "author": "Isaac Z. Schlueter",
+    "repository": "https://github.com/isaacs/yallist",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "yauzl",
+    "version": "2.10.0",
+    "license": "MIT",
+    "author": "Josh Wolfe",
+    "repository": "https://github.com/thejoshwolfe/yauzl",
+    "licenseText": "See repository"
+  },
+  {
+    "name": "zustand",
+    "version": "5.0.10",
+    "license": "MIT",
+    "author": "Paul Henschel",
+    "repository": "https://github.com/pmndrs/zustand",
+    "licenseText": "See repository"
+  }
+]

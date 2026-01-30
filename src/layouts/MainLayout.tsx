@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { AboutModal } from '../components/AboutModal'
 
 interface MainLayoutProps {
     children: React.ReactNode
@@ -13,6 +14,7 @@ interface MainLayoutProps {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategory, onSelectCategory, customCategories, onManageCategories, onImport, onNewScale }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+    const [showAbout, setShowAbout] = useState(false)
 
     // Grouped categories for the sidebar (SwiftScales Port)
     const CATEGORY_GROUPS = [
@@ -123,6 +125,15 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategor
                 >
                     Manage Categories
                 </button>
+                <button
+                    onClick={() => {
+                        setShowAbout(true)
+                        setIsSidebarOpen(false)
+                    }}
+                    className="w-full py-2 text-slate-400 hover:text-slate-600 text-xs font-semibold transition-colors mt-2"
+                >
+                    About & Credits
+                </button>
             </div>
         </>
     )
@@ -191,6 +202,8 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategor
                     {children}
                 </main>
             </div>
+
+            <AboutModal isOpen={showAbout} onClose={() => setShowAbout(false)} />
         </div>
     )
 }

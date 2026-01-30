@@ -28,46 +28,78 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
     const { playNote, playScale: playFullScale } = useAudioStore()
 
     const [name, setName] = useState(existingScale?.name || '')
-    const [category, setCategory] = useState(existingScale?.category || 'Major')
+
+    // Smart default: Existing -> First Available -> 'Custom'
+    const availableCustomCategories = useMemo(() =>
+        categories.filter(c => !DEFAULT_CATEGORIES.includes(c)),
+        [categories])
+
+    const [category, setCategory] = useState(() => {
+        if (existingScale?.category) return existingScale.category
+        if (availableCustomCategories.length > 0) return availableCustomCategories[0]
+        return 'Custom'
+    })
+
     const [newCategory, setNewCategory] = useState('')
     const [isCreatingCategory, setIsCreatingCategory] = useState(false)
     const [notes, setNotes] = useState<NoteEvent[]>(existingScale?.notes || [])
 
     // Editor State
     const [selectedDuration, setSelectedDuration] = useState('4n')
-    const [currentPitch, setCurrentPitch] = useState('C4')
+    const [currentNote, setCurrentNote] = useState('C')
+    const [selectedOctave, setSelectedOctave] = useState('4')
 
     const handleSave = () => {
-        if (!name.trim()) return
+        if (!name.trim()) {
+            return
+        }
+        if (notes.length === 0) {
+            return
+        }
+
+        const finalCategory = isCreatingCategory ? newCategory : category
+        if (!finalCategory) {
+            alert("Please select or enter a category name.")
+            return
+        }
 
         const scaleData = {
             name,
-            category: isCreatingCategory ? newCategory : category,
+            category: finalCategory,
             notes
         }
 
-        if (isCreatingCategory && newCategory) {
-            addCategory(newCategory)
-        }
+        try {
+            // Ensure category exists in store so it shows up in tabs
+            if (isCreatingCategory) {
+                addCategory(newCategory)
+            } else if (!categories.includes(finalCategory)) {
+                // Auto-create if somehow selected but missing (e.g. 'Custom' default)
+                addCategory(finalCategory)
+            }
 
-        if (existingScale) {
-            updateScale(existingScale.id, scaleData)
-        } else {
-            addScale(scaleData)
+            if (existingScale) {
+                updateScale(existingScale.id, scaleData)
+            } else {
+                addScale(scaleData)
+            }
+            onSave?.()
+            onClose()
+        } catch (error) {
+            console.error("ScaleCreator: Save failed:", error)
+            alert("Failed to save scale. Check console for details.")
         }
-
-        onSave?.()
-        onClose()
     }
 
     const addEvent = (type: 'note' | 'rest') => {
+        const pitch = currentNote + selectedOctave
         const newEvent: NoteEvent = {
             type,
             duration: selectedDuration,
-            pitch: type === 'note' ? currentPitch : undefined
+            pitch: type === 'note' ? pitch : undefined
         }
         setNotes([...notes, newEvent])
-        if (type === 'note') playNote(currentPitch, selectedDuration)
+        if (type === 'note') playNote(pitch, selectedDuration)
     }
 
     const removeEvent = (index: number) => {
@@ -160,7 +192,7 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
                                                 onChange={(e) => setCategory(e.target.value)}
                                                 className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 appearance-none focus:ring-2 focus:ring-neon-pink-500 outline-none font-bold cursor-pointer"
                                             >
-                                                {categories.filter(c => !DEFAULT_CATEGORIES.includes(c) && !['Major', 'Minor', 'Pentatonic', 'Blues', 'Modes'].includes(c)).map(c => <option key={c} value={c}>{c}</option>)}
+                                                {categories.filter(c => !DEFAULT_CATEGORIES.includes(c)).map(c => <option key={c} value={c}>{c}</option>)}
                                             </select>
                                             <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -272,7 +304,7 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
                                         >
                                             <button
                                                 onClick={(e) => { e.stopPropagation(); removeEvent(i); }}
-                                                className="absolute -top-2 -right-2 w-6 h-6 bg-white text-slate-400 hover:text-red-500 border border-slate-200 rounded-full text-xs opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center shadow-sm z-10"
+                                                className="absolute -top-2 -right-2 w-6 h-6 bg-white text-slate-400 hover:text-red-500 border border-slate-200 rounded-full text-xs shadow-sm z-10 flex items-center justify-center transition-colors"
                                             >
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -312,30 +344,54 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
                         {/* Input Controls */}
                         <div className="space-y-4">
                             {/* Pitch Selector */}
-                            <div className="p-4 bg-white rounded-2xl border border-slate-200">
-                                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 block">Select Pitch</label>
-                                <div className="flex flex-wrap gap-2">
-                                    {['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'].map(note => {
-                                        const notePitch = note + '4';
-                                        const isSelected = currentPitch === notePitch;
-                                        return (
+                            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                                <div className="p-4 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
+                                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Pitch</label>
+                                    <div className="flex bg-white rounded-lg p-1 border border-slate-200 shadow-sm">
+                                        {[2, 3, 4, 5, 6].map(oct => (
                                             <button
-                                                key={note}
+                                                key={oct}
                                                 onClick={() => {
-                                                    setCurrentPitch(notePitch)
-                                                    playNote(notePitch, '8n')
+                                                    setSelectedOctave(oct.toString())
+                                                    const pitch = currentNote + oct
+                                                    playNote(pitch, '8n')
                                                 }}
                                                 className={clsx(
-                                                    "w-10 h-10 rounded-xl text-sm font-bold transition-all shadow-sm border",
-                                                    isSelected
-                                                        ? "bg-neon-pink-500 text-white border-neon-pink-500 shadow-neon-pink-500/20 scale-110 z-10"
-                                                        : "bg-slate-50 text-slate-500 border-slate-100 hover:bg-white hover:border-slate-300 hover:text-slate-700"
+                                                    "px-3 py-1 text-xs font-bold rounded-md transition-all",
+                                                    selectedOctave === oct.toString()
+                                                        ? "bg-slate-800 text-white shadow-sm"
+                                                        : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
                                                 )}
                                             >
-                                                {note}
+                                                {oct}
                                             </button>
-                                        )
-                                    })}
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="p-4">
+                                    <div className="flex flex-wrap gap-2 justify-center">
+                                        {['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'].map(note => {
+                                            const isSelected = currentNote === note;
+                                            return (
+                                                <button
+                                                    key={note}
+                                                    onClick={() => {
+                                                        setCurrentNote(note)
+                                                        const pitch = note + selectedOctave
+                                                        playNote(pitch, '8n')
+                                                    }}
+                                                    className={clsx(
+                                                        "w-10 h-10 rounded-xl text-sm font-bold transition-all shadow-sm border",
+                                                        isSelected
+                                                            ? "bg-neon-pink-500 text-white border-neon-pink-500 shadow-neon-pink-500/20 scale-110 z-10"
+                                                            : "bg-slate-50 text-slate-500 border-slate-100 hover:bg-white hover:border-slate-300 hover:text-slate-700"
+                                                    )}
+                                                >
+                                                    {note}
+                                                </button>
+                                            )
+                                        })}
+                                    </div>
                                 </div>
                             </div>
 

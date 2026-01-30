@@ -1,3 +1,4 @@
+import * as Tone from 'tone'
 import { useState, useEffect, useMemo } from 'react'
 import { MainLayout } from '@/layouts/MainLayout'
 import { SessionControls } from '@/components/SessionDashboard'
@@ -35,8 +36,9 @@ function App() {
       let pattern: any[] = []
 
       if (firstNote && firstNote.pitch) {
+        const rootMidi = Tone.Frequency(firstNote.pitch).toMidi()
         pattern = notes.filter(n => n.type === 'note').map(n => ({
-          interval: 0, // Visualizer adaptation
+          interval: n.pitch ? Tone.Frequency(n.pitch).toMidi() - rootMidi : 0,
           duration: n.duration
         }))
       }
@@ -88,7 +90,7 @@ function App() {
     <MainLayout
       currentCategory={selectedCategory}
       onSelectCategory={setSelectedCategory}
-      customCategories={customCategories.filter(c => !['Major', 'Minor', 'Pentatonic', 'Blues', 'Modes', 'Foundation', 'Consistency', 'Tone', 'Pitch', 'Flexibility', 'Agility', 'Range', 'Precision', 'Accuracy', 'Sustain', 'Connection', 'Presence', 'Endurance', 'Power', 'Performance', 'Warmdown'].includes(c))}
+      customCategories={customCategories.filter(c => !['Foundation', 'Consistency', 'Tone', 'Pitch', 'Flexibility', 'Agility', 'Range', 'Precision', 'Accuracy', 'Sustain', 'Connection', 'Presence', 'Endurance', 'Power', 'Performance', 'Warmdown'].includes(c))}
       onManageCategories={() => setShowCategoryManager(true)}
       onImport={() => setShowImport(true)}
       onNewScale={() => {

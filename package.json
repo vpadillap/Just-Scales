@@ -1,7 +1,7 @@
 {
   "name": "justscales",
   "private": true,
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "module",
   "main": "dist-electron/main.js",
   "repository": {
@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run licenses:generate && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "electron:dev": "concurrently \"npm run dev\" \"wait-on tcp:5173 && tsc -p tsconfig.electron.json && electron .\"",
@@ -19,7 +19,8 @@
     "android:init": "cap add android",
     "android:sync": "cap sync android",
     "android:open": "cap open android",
-    "release": "node scripts/release-manager.js"
+    "release": "node scripts/release-manager.js",
+    "licenses:generate": "node scripts/generate-licenses.cjs"
   },
   "description": "Simple vocal practicing tool for singers",
   "author": "Victor Padilla Prado (Acuario)",
@@ -76,6 +77,7 @@
     "fs-extra": "^11.3.3",
     "globals": "^16.5.0",
     "inquirer": "^13.2.2",
+    "license-checker": "^25.0.1",
     "postcss": "^8.5.6",
     "semver": "^7.7.3",
     "tailwindcss": "^4.1.18",
