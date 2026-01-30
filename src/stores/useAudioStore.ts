@@ -191,5 +191,30 @@ export const useAudioStore = create<AudioState>((set, get) => ({
         }
     },
 
-    playScale: (_notes: string[], _interval = '4n') => { }
+    playScale: async (notes, interval = '8n') => {
+        const { initAudio, stopSession } = get()
+        stopSession()
+        await initAudio()
+
+        // 1. Convert Scale Notes (which could be names or intervals if adapting, but here assume absolute names)
+        // If notes are names (e.g. C4, D4), just play them.
+
+        const now = Tone.now()
+        const durationSec = Tone.Time(interval).toSeconds()
+
+        notes.forEach((note, index) => {
+            const time = now + (index * durationSec)
+            synth?.triggerAttackRelease(note, interval, time)
+
+            // Visual feedback (optional here, but useful if we bind it to state)
+            Tone.Draw.schedule(() => {
+                set({ currentNote: note, currentStepIndex: index })
+            }, time)
+
+            Tone.Draw.schedule(() => {
+                if (get().currentNote === note) set({ currentNote: null })
+                if (get().currentStepIndex === index) set({ currentStepIndex: null })
+            }, time + durationSec)
+        })
+    }
 }))

@@ -5,9 +5,12 @@ import { DotGraphVisualizer } from './DotGraphVisualizer'
 
 interface SessionControlsProps {
     scale: Scale
+    onShare: () => void
+    onEdit?: () => void
 }
 
-export const SessionControls: React.FC<SessionControlsProps> = ({ scale }) => {
+export const SessionControls: React.FC<SessionControlsProps> = ({ scale, onShare, onEdit }) => {
+    // ... (existing state) ...
     const {
         bpm, setBpm,
         currentRoot, setRoot,
@@ -17,6 +20,7 @@ export const SessionControls: React.FC<SessionControlsProps> = ({ scale }) => {
     } = useAudioStore()
 
     const [localBpm, setLocalBpm] = React.useState<string>(bpm.toString())
+    const [showInstructions, setShowInstructions] = React.useState(false)
 
     // Sync local BPM when store updates (e.g. via slider)
     React.useEffect(() => {
@@ -40,6 +44,7 @@ export const SessionControls: React.FC<SessionControlsProps> = ({ scale }) => {
     // Stop session when scale changes or component unmounts
     React.useEffect(() => {
         stopSession()
+        setShowInstructions(false) // Hide tooltip on scale change
         return () => stopSession()
     }, [scale.id, stopSession])
 
@@ -80,21 +85,54 @@ export const SessionControls: React.FC<SessionControlsProps> = ({ scale }) => {
                     </div>
                 </div>
 
+                {/* Share Button (Top Right) */}
+                <div className="absolute top-2 right-2 flex gap-2">
+                    {onEdit && (
+                        <button
+                            onClick={onEdit}
+                            className="p-2 text-slate-400 hover:text-neon-pink-500 hover:bg-neon-pink-50 rounded-full transition-colors"
+                            title="Edit Scale"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                        </button>
+                    )}
+                    <button
+                        onClick={onShare}
+                        className="p-2 text-slate-400 hover:text-neon-pink-600 transition-colors"
+                        title="Share Scale"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                        </svg>
+                    </button>
+                </div>
+
                 <h2 className="text-2xl md:text-3xl font-black text-slate-900 mt-2">{scale.name}</h2>
                 <p className="text-slate-500 max-w-md mx-auto text-xs md:text-sm truncate">{scale.description}</p>
 
-                {/* Instruction - Always visible or explicit toggle? Keeping tooltip but solid */}
-                <div className="group relative inline-block">
-                    <button className="text-[10px] font-bold text-neon-pink-600 uppercase tracking-widest hover:underline cursor-help">
-                        View Instructions
+                {/* Instruction - Toggle State for Touch */}
+                <div className="relative inline-block mt-1">
+                    <button
+                        onClick={() => setShowInstructions(!showInstructions)}
+                        className="text-[10px] font-bold text-neon-pink-600 uppercase tracking-widest hover:underline cursor-help"
+                    >
+                        {showInstructions ? 'Hide Instructions' : 'View Instructions'}
                     </button>
-                    {/* Solid Tooltip */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 md:w-96 p-6 rounded-xl bg-slate-900 text-white shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50 text-left border border-slate-700">
-                        <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900 rotate-45 border-l border-t border-slate-700"></div>
-                        <p className="text-sm leading-relaxed text-slate-300 relative z-10">
-                            {scale.detailedInstructions}
-                        </p>
-                    </div>
+
+                    {/* Tooltip */}
+                    {showInstructions && (
+                        <div
+                            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 md:w-96 p-6 rounded-xl bg-slate-900 text-white shadow-xl z-50 text-left border border-slate-700 animate-in fade-in zoom-in-95 duration-200"
+                            onClick={() => setShowInstructions(false)} // Click to dismiss
+                        >
+                            <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-slate-900 rotate-45 border-l border-t border-slate-700"></div>
+                            <p className="text-sm leading-relaxed text-slate-300 relative z-10">
+                                {scale.detailedInstructions}
+                            </p>
+                        </div>
+                    )}
                 </div>
             </div>
 

@@ -19,7 +19,8 @@
 
 /* Windows specific: Reserve space for native window controls if frameless */
 body.platform-win32 .app-drag-region {
-   padding-right: 140px; /* Space for minimize/maximize/close */
+  padding-right: 140px;
+  /* Space for minimize/maximize/close */
 }
 
 /* For Electron Window Dragging */
@@ -62,4 +63,10 @@ button {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+
+/* Custom Design System Tokens (if not using full tailwind config) */
+/* The user mentioned 'transparent background' was due to missing bg-surface-base */
+.bg-surface-base {
+  @apply bg-slate-50;
 }

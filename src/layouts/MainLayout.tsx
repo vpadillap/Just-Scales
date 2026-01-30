@@ -5,9 +5,13 @@ interface MainLayoutProps {
     children: React.ReactNode
     currentCategory?: string
     onSelectCategory?: (category: string) => void
+    customCategories?: string[]
+    onManageCategories?: () => void
+    onImport?: () => void
+    onNewScale?: () => void
 }
 
-export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategory, onSelectCategory }) => {
+export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategory, onSelectCategory, customCategories, onManageCategories, onImport, onNewScale }) => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
     // Grouped categories for the sidebar (SwiftScales Port)
@@ -71,6 +75,54 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, currentCategor
                         </div>
                     </div>
                 ))}
+
+                {/* Custom Categories */}
+                {customCategories && customCategories.length > 0 && (
+                    <div className="mb-6">
+                        <h3 className="px-4 mb-2 text-xs font-bold text-slate-400 uppercase tracking-widest">My Library</h3>
+                        <div className="space-y-1">
+                            {customCategories.map((category) => (
+                                <button
+                                    key={category}
+                                    onClick={() => {
+                                        onSelectCategory?.(category)
+                                        setIsSidebarOpen(false)
+                                    }}
+                                    className={`w-full text-left px-4 py-3 rounded-r-lg transition-all font-bold flex items-center relative
+                                    ${currentCategory === category
+                                            ? 'bg-neon-pink-50 text-neon-pink-600 border-l-4 border-neon-pink-500'
+                                            : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900 border-l-4 border-transparent'}
+                                `}
+                                >
+                                    {category}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            <div className="p-4 border-t border-surface-mid space-y-2">
+                <div className="grid grid-cols-2 gap-2">
+                    <button
+                        onClick={onImport}
+                        className="py-2 bg-white border border-slate-200 hover:border-neon-pink-200 text-slate-500 hover:text-neon-pink-500 rounded-lg text-sm font-bold transition-colors flex items-center justify-center gap-1"
+                    >
+                        Import
+                    </button>
+                    <button
+                        onClick={onNewScale}
+                        className="py-2 bg-neon-pink-500 hover:bg-neon-pink-600 text-white rounded-lg text-sm font-bold transition-colors flex items-center justify-center gap-1"
+                    >
+                        + New
+                    </button>
+                </div>
+                <button
+                    onClick={onManageCategories}
+                    className="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg text-sm font-bold transition-colors"
+                >
+                    Manage Categories
+                </button>
             </div>
         </>
     )

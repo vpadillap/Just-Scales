@@ -5,16 +5,23 @@ import { useAudioStore } from '@/stores/useAudioStore'
 
 // Helper to calculate unrolled sequence steps
 // Should match logic in runLoop!
+// Helper to calculate unrolled sequence steps
+// Should match logic in runLoop!
 const getUnrolledSequence = (scale: Scale): { note: string, interval: number }[] => {
     const repeatCount = scale.repeatOnRoot || 1
     const seq: { note: string, interval: number }[] = []
 
+    const pattern = scale.pattern || []
+
+    // If no pattern but we have notes (custom scale), we might want to try to visualize them?
+    // But ideally parsing logic should happen upstream in App.tsx or useScaleStore
+
     for (let r = 0; r < repeatCount; r++) {
-        scale.pattern.forEach(p => {
+        pattern.forEach(p => {
             // We can calculate the absolute semitone interval from the base root
             // This simplifies visualization height mapping
             // But runLoop calculates actual notes. Let's do semitones relative to currentRoot for visual height.
-            seq.push({ note: '', interval: p.interval }) // note string not strictly needed for height if we trust interval
+            seq.push({ note: '', interval: p.interval || 0 }) // note string not strictly needed for height if we trust interval
         })
     }
     return seq
@@ -74,7 +81,7 @@ export const DotGraphVisualizer: React.FC<DotGraphVisualizerProps> = ({ scale })
                             r={isActive ? 10 : 6}
                             initial={false}
                             animate={{
-                                fill: isActive ? '#ec4899' : '#94a3b8',
+                                fill: isActive ? '#f72585' : '#cbd5e1', // neon-pink-500 : slate-300
                                 opacity: isActive ? 1 : 0.5,
                                 scale: isActive ? 1.3 : 1,
                             }}
