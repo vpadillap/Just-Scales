@@ -19,7 +19,7 @@ Manually maintaining a credits file is error-prone; if a dependency is added or 
 - Ensures that if a package is removed, it disappears from the output on the next run.
 
 ### 2. User Interface (About & Credits)
-- **About Section**: A new small button/section in the app to show developer info ("About JustScales").
+- **About Section**: A new small button/section in the app to show developer info ("About Just Scales").
 - **Credits Popup**: Triggered from the About section, displaying the generated license text/attribution list.
 
 ### 3. Release Integration

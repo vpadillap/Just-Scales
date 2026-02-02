@@ -33,7 +33,7 @@ After the script finishes:
     ```bash
     git push && git push --tags
     ```
-2.  Create the release on GitHub (step 5 below).
+2.  Create the release on GitHub (step 3 below).
 
 ### 3. GitHub Release
 Create the release on GitHub.
@@ -44,15 +44,15 @@ gh release create vX.Y.Z --title "vX.Y.Z" --notes "See CHANGELOG.md for details.
 ### 4. Attach Binaries
 Upload the artifacts found in `release/vX.Y.Z/`:
 -   `JustScales-X.Y.Z-win.zip` (Windows)
--   `JustScales-X.Y.Z.exe` (Windows)
 -   `JustScales-X.Y.Z.apk` (Android)
 
-### 6. Attach Binaries
+### 5. Attach Binaries
 After the release is created on GitHub:
-1.  Locate the build artifacts in the `release/` directory (e.g., `Just Scales Setup 1.0.0.exe`).
+1.  Locate the build artifacts in the `release/` directory (e.g., `Just Scales-1.2.1-win.zip`).
 2.  Edit the release on GitHub.
 3.  Upload the following artifact types as assets:
     -   **Windows**: ZIP Archive (`.zip`) (via `electron-builder`)
+    -   **Android**: APK (`.apk`) (via `gradlew assembleRelease`)
 4.  Save the release.
 
 ## Build Verification

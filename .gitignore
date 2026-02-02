@@ -27,13 +27,6 @@ release/
 .DS_Store
 Thumbs.db
 
-# Agentic / AI
-.agent/
-.agents/
-.gemini/
-.antigravity/
-brain/
-
 # Android
 android/app/build/
 android/.gradle

@@ -28,3 +28,12 @@
 - [x] Manual test: Open About modal, click Credits, verify list.
 - [x] Manual test: Verify links to repositories work.
 - [x] Automated test: Verify the JSON file is created/updated on build.
+
+## 5. Fixes & Polish
+- [x] Fix `scripts/generate-licenses.cjs`: Ensure strictly ONLY production dependencies are included (exclude dev/build tools).
+- [x] Refine `AboutModal.tsx`:
+    - [x] Match app typography and color palette strictly (Neon Pink accents, slate/dark mode consistency).
+    - [x] Improve layout and component hierarchy.
+- [x] Refine `CreditsList.tsx`:
+    - [x] Improve styling of license items to behave like native app list items.
+- [x] Verify manual test: Ensure no devMain/build dependencies appear in the list.

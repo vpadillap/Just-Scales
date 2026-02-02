@@ -13,7 +13,7 @@
 ## Installation
 
 ### Windows
-1.  Go to the [Latest Release](https://github.com/user/JustScales/releases/latest) page.
+1.  Go to the [Latest Release](https://github.com/vpadillap/Just-Scales/releases/latest) page.
 2.  Download the **ZIP Archive** (`.zip`).
 3.  Extract the ZIP file to a folder of your choice.
 4.  Run `Just Scales.exe`.
@@ -26,7 +26,7 @@
 > **Important:** If you have **Smart App Control** enabled on Windows, it may block the application entirely without an option to run. You may need to disable it or whitelist the app to run it.
 
 ### Android
-1.  Download the `.apk` from the [Latest Release](https://github.com/user/JustScales/releases/latest).
+1.  Download the `.apk` from the [Latest Release](https://github.com/vpadillap/Just-Scales/releases/latest).
 2.  Install it on your device (you may need to enable "Install from Unknown Sources").
     *Alternatively, builds will be available on the Play Store in the future.*
 
@@ -42,7 +42,7 @@ Currently, you must build from source (see Development).
 ### Setup
 ```bash
 # Clone the repo
-git clone https://github.com/user/JustScales.git
+git clone https://github.com/vpadillap/Just-Scales.git
 cd JustScales
 
 # Install dependencies
