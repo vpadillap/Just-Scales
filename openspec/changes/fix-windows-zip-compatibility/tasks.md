@@ -1,13 +1,11 @@
 
-# Tasks: Windows ZIP Compatibility
+# Tasks: Windows ZIP Compatibility (Revision 5)
 
-## 1. Configuration
-- [x] Modify `package.json`: 
-    - [x] Locate `build.win`.
-    - [x] Update `target` to explicitly specify `zip` with `x64`.
-    - [x] Add `"compression": "store"`.
+## 1. Dependency Cleanup
+- [x] Modify `package.json`:
+    - [x] Move `@capacitor/android` to `devDependencies`.
+    - [x] Move `@capacitor/camera` to `devDependencies`.
 
 ## 2. Verification
 - [x] Run `npm run electron:build`.
-- [x] Verify the output ZIP in `release/`.
-- [x] (Manual) Attempt to open ZIP with Windows Explorer.
+- [x] Verify `release/Just Scales-1.3.0-win.zip` works.

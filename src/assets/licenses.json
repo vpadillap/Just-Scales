@@ -7,20 +7,6 @@
     "repository": "https://github.com/babel/babel"
   },
   {
-    "name": "@capacitor/android",
-    "version": "8.0.2",
-    "license": "MIT",
-    "author": "Ionic Team",
-    "repository": "https://github.com/ionic-team/capacitor"
-  },
-  {
-    "name": "@capacitor/camera",
-    "version": "8.0.0",
-    "license": "MIT",
-    "author": "Ionic",
-    "repository": "https://github.com/ionic-team/capacitor-plugins"
-  },
-  {
     "name": "@capacitor/core",
     "version": "8.0.2",
     "license": "MIT",

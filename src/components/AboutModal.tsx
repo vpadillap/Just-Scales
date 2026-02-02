@@ -94,7 +94,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
                                             <p className="text-xs text-slate-400 uppercase tracking-widest font-bold mb-2">Developed By</p>
                                             <a href="https://github.com/Start-sys" target="_blank" rel="noopener noreferrer" className="font-semibold text-text-primary hover:text-neon-pink-500 transition-colors">
                                                 Victor Padilla Prado
-                                                <span className="block text-xs font-normal text-slate-400 mt-0.5">(Acuario)</span>
+                                                <span className="block text-xs font-normal text-slate-400 mt-0.5">Acuario</span>
                                             </a>
                                         </div>
 
