@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { BarcodeScanner, BarcodeFormat, LensFacing } from '@capacitor-mlkit/barcode-scanning'
+import { Capacitor } from '@capacitor/core'
 
 
 interface QRScannerProps {
@@ -61,6 +62,17 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError, onClose }
             }
         };
 
+        // Platform Check
+        const isNative = Capacitor.isNativePlatform()
+
+        if (isNative) {
+            // Make WebView transparent on Native to see Camera behind
+            document.body.style.backgroundColor = 'transparent'
+            document.documentElement.style.backgroundColor = 'transparent'
+            // If there's a root div (e.g. #root) that has a background, we might need to set it too.
+            // Assuming typical setup where body has the background color or root app does.
+        }
+
         startScanning()
 
         return () => {
@@ -68,8 +80,16 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError, onClose }
             didStartRef.current = false
             BarcodeScanner.removeAllListeners().catch(console.error)
             BarcodeScanner.stopScan().catch(console.error)
+
+            // Restore Background
+            if (isNative) {
+                document.body.style.backgroundColor = ''
+                document.documentElement.style.backgroundColor = ''
+            }
         }
     }, [onScan, onError])
+
+    const isNative = Capacitor.isNativePlatform()
 
     // UI Layer
     // On native, the camera is technically "behind" the WebView.
@@ -78,7 +98,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError, onClose }
     // Capawesome docs say for web it requests getUserMedia.
     // We interpret the implementation: usually rendering 'nothing' (transparent) or a 'Stop' button is what we do here.
     return (
-        <div className="absolute inset-0 bg-black/50 z-50 flex flex-col items-center justify-center">
+        <div className={`absolute inset-0 z-50 flex flex-col items-center justify-center ${isNative ? 'bg-transparent' : 'bg-black/50'}`}>
             {/* This overlay sits on top. 
                  On Native: The camera is BEHIND. We need to make sure this div is TRANSPARENT where the camera should be seen?
                  Actually, @capacitor-mlkit on Web usually renders a video element. 
