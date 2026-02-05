@@ -115,7 +115,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
             })
 
             // 3. Schedule Intervals (Guide Chord -> Next)
-            const pauseDur = Tone.Time("2n").toSeconds()
+            const pauseDur = Tone.Time("4n").toSeconds()
             const guideDur = Tone.Time("4n").toSeconds()
 
             // A. Play Guide Chord
