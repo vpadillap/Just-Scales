@@ -69,7 +69,9 @@ export const useAudioStore = create<AudioState>((set, get) => ({
         Tone.Transport.start()
 
         // Start the Loop
-        const runLoop = () => {
+        const STARTUP_BUFFER = 0.1
+
+        const runLoop = (initialOffset = 0) => {
             const { sessionStatus, currentRoot } = get()
             if (sessionStatus === 'IDLE') return
 
@@ -90,7 +92,7 @@ export const useAudioStore = create<AudioState>((set, get) => ({
             }
 
             // 2. Schedule Playback
-            let accumulatedTime = 0
+            let accumulatedTime = initialOffset
             // Schedule relative to Transport time
 
             fullPatternSequence.forEach((item, index) => {
@@ -140,6 +142,10 @@ export const useAudioStore = create<AudioState>((set, get) => ({
 
             // B. Restart Loop
             const restartTime = guideTime + guideDur + pauseDur
+
+            // Lookahead: Schedule the NEXT loop setup slightly before the actual restart time
+            // We subtract STARTUP_BUFFER from the schedule time, but pass STARTUP_BUFFER to runLoop
+            // so the first note is scheduled at (restartTime - BUFFER) + BUFFER = restartTime.
             Tone.Transport.scheduleOnce(() => {
                 const { sessionStatus, direction, currentRoot: r } = get()
                 if (sessionStatus === 'IDLE') return
@@ -149,11 +155,11 @@ export const useAudioStore = create<AudioState>((set, get) => ({
                 const nextRoot = Tone.Frequency(r).transpose(semitones).toNote()
                 set({ currentRoot: nextRoot })
 
-                runLoop()
-            }, `+${restartTime}`)
+                runLoop(STARTUP_BUFFER)
+            }, `+${restartTime - STARTUP_BUFFER}`)
         }
 
-        runLoop()
+        runLoop(STARTUP_BUFFER)
     },
 
     stopSession: () => {

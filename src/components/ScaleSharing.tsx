@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { QRCodeCanvas } from 'qrcode.react'
 import type { Scale as DataScale } from '../data/scales'
 import { motion } from 'framer-motion'
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera'
-import jsQR from 'jsqr'
 
 // --- EXPORT COMPONENT ---
 
@@ -78,6 +76,8 @@ interface ScaleImportProps {
     onClose: () => void
 }
 
+import { QRScanner } from './QRScanner'
+
 export const ScaleImport: React.FC<ScaleImportProps> = ({ onImport, onClose }) => {
     const [jsonText, setJsonText] = useState('')
     const [error, setError] = useState<string | null>(null)
@@ -100,125 +100,84 @@ export const ScaleImport: React.FC<ScaleImportProps> = ({ onImport, onClose }) =
             onClose()
         } catch (e) {
             setError("Invalid Scale Data")
-        }
-    }
-
-    const handleScan = async () => {
-        try {
-            setScanning(true)
-            const image = await Camera.getPhoto({
-                quality: 90,
-                allowEditing: false,
-                resultType: CameraResultType.Uri,
-                source: CameraSource.Camera
-            })
-
-            // Decode
-            const img = new Image()
-            img.onload = () => {
-                const canvas = document.createElement('canvas')
-                canvas.width = img.width
-                canvas.height = img.height
-                const context = canvas.getContext('2d')
-                if (context) {
-                    context.drawImage(img, 0, 0)
-                    const imageData = context.getImageData(0, 0, img.width, img.height)
-                    const code = jsQR(imageData.data, imageData.width, imageData.height)
-                    if (code) {
-                        validateAndImport(code.data)
-                    } else {
-                        setError("No QR code found")
-                    }
-                }
-                setScanning(false)
-            }
-            img.onerror = () => {
-                setError("Failed to load image")
-                setScanning(false)
-            }
-            if (image.webPath) {
-                img.src = image.webPath
-            } else {
-                setError("Camera failed")
-                setScanning(false)
-            }
-
-        } catch (e) {
-            console.error(e)
-            setError(String(e))
-            setScanning(false)
+            setScanning(false) // Stop scanning if invalid data flows through
         }
     }
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
-            <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-white border border-slate-200 rounded-3xl p-6 w-full max-w-md shadow-2xl"
-            >
-                <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
-                    <h2 className="text-xl font-black text-slate-900 uppercase tracking-tight">Import Scale</h2>
-                    <button onClick={onClose} className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-
-                <div className="space-y-6">
-                    <button
-                        onClick={handleScan}
-                        disabled={scanning}
-                        className="w-full py-4 bg-neon-pink-500 hover:bg-neon-pink-600 text-white rounded-xl font-black transition-all shadow-lg shadow-neon-pink-500/20 active:translate-y-1 flex items-center justify-center gap-3 active:scale-95"
-                    >
-                        {scanning ? (
-                            <span className="animate-pulse">Scanning...</span>
-                        ) : (
-                            <>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                                </svg>
-                                <span>SCAN QR CODE</span>
-                            </>
-                        )}
-                    </button>
-
-                    <div className="relative">
-                        <div className="absolute inset-0 flex items-center">
-                            <div className="w-full border-t border-slate-200"></div>
-                        </div>
-                        <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest">
-                            <span className="px-3 bg-white text-slate-400">or paste text</span>
-                        </div>
+            {/* If scanning, show the scanner overlay fully */}
+            {scanning ? (
+                <QRScanner
+                    onScan={validateAndImport}
+                    onError={(err) => {
+                        setError(err)
+                        setScanning(false)
+                    }}
+                    onClose={() => setScanning(false)}
+                />
+            ) : (
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-white border border-slate-200 rounded-3xl p-6 w-full max-w-md shadow-2xl"
+                >
+                    <div className="flex justify-between items-center mb-6 border-b border-slate-100 pb-4">
+                        <h2 className="text-xl font-black text-slate-900 uppercase tracking-tight">Import Scale</h2>
+                        <button onClick={onClose} className="p-2 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
 
-                    <textarea
-                        value={jsonText}
-                        onChange={(e) => {
-                            setJsonText(e.target.value)
-                            setError(null)
-                        }}
-                        className="w-full h-32 bg-slate-50 border border-slate-200 rounded-xl p-4 text-slate-800 text-xs font-mono focus:ring-2 focus:ring-neon-pink-500 outline-none resize-none placeholder:text-slate-400"
-                        placeholder='Paste scale JSON here...'
-                    />
+                    <div className="space-y-6">
+                        <button
+                            onClick={() => setScanning(true)}
+                            className="w-full py-4 bg-neon-pink-500 hover:bg-neon-pink-600 text-white rounded-xl font-black transition-all shadow-lg shadow-neon-pink-500/20 active:translate-y-1 flex items-center justify-center gap-3 active:scale-95"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>SCAN QR CODE</span>
+                        </button>
 
-                    {error && (
-                        <div className="bg-red-50 border border-red-100 rounded-lg p-3">
-                            <p className="text-red-500 text-xs font-bold text-center uppercase tracking-wide">{error}</p>
+                        <div className="relative">
+                            <div className="absolute inset-0 flex items-center">
+                                <div className="w-full border-t border-slate-200"></div>
+                            </div>
+                            <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest">
+                                <span className="px-3 bg-white text-slate-400">or paste text</span>
+                            </div>
                         </div>
-                    )}
 
-                    <button
-                        onClick={() => validateAndImport(jsonText)}
-                        disabled={!jsonText.trim()}
-                        className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-slate-200"
-                    >
-                        Import Text
-                    </button>
-                </div>
-            </motion.div>
+                        <textarea
+                            value={jsonText}
+                            onChange={(e) => {
+                                setJsonText(e.target.value)
+                                setError(null)
+                            }}
+                            className="w-full h-32 bg-slate-50 border border-slate-200 rounded-xl p-4 text-slate-800 text-xs font-mono focus:ring-2 focus:ring-neon-pink-500 outline-none resize-none placeholder:text-slate-400"
+                            placeholder='Paste scale JSON here...'
+                        />
+
+                        {error && (
+                            <div className="bg-red-50 border border-red-100 rounded-lg p-3">
+                                <p className="text-red-500 text-xs font-bold text-center uppercase tracking-wide">{error}</p>
+                            </div>
+                        )}
+
+                        <button
+                            onClick={() => validateAndImport(jsonText)}
+                            disabled={!jsonText.trim()}
+                            className="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-xl font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed border border-slate-200"
+                        >
+                            Import Text
+                        </button>
+                    </div>
+                </motion.div>
+            )}
         </div>
     )
 }

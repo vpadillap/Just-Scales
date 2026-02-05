@@ -40,6 +40,7 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
         return 'Custom'
     })
 
+    const [instructions, setInstructions] = useState(existingScale?.detailedInstructions || '')
     const [newCategory, setNewCategory] = useState('')
     const [isCreatingCategory, setIsCreatingCategory] = useState(false)
     const [notes, setNotes] = useState<NoteEvent[]>(existingScale?.notes || [])
@@ -66,7 +67,8 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
         const scaleData = {
             name,
             category: finalCategory,
-            notes
+            notes,
+            detailedInstructions: instructions
         }
 
         try {
@@ -137,9 +139,9 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
             category: 'Preview',
             pattern,
             description: '',
-            detailedInstructions: ''
+            detailedInstructions: instructions
         } as unknown as DataScale
-    }, [notes, name])
+    }, [notes, name, instructions])
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
@@ -225,6 +227,16 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
                                         </button>
                                     </div>
                                 )}
+                            </div>
+
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest px-1">Instructions / Tooltip</label>
+                                <textarea
+                                    value={instructions}
+                                    onChange={(e) => setInstructions(e.target.value)}
+                                    className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-slate-900 text-sm font-medium focus:ring-2 focus:ring-neon-pink-500 outline-none transition-all placeholder:text-slate-300 resize-none h-24"
+                                    placeholder="Add tips (e.g., 'Use a breathy tone...')"
+                                />
                             </div>
                         </div>
 
@@ -435,7 +447,7 @@ export const ScaleCreator: React.FC<ScaleCreatorProps> = ({ existingScale, onClo
                         Save Scale
                     </button>
                 </div>
-            </motion.div>
-        </div>
+            </motion.div >
+        </div >
     )
 }

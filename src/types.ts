@@ -11,4 +11,5 @@ export interface Scale {
     notes?: NoteEvent[];
     isCustom: boolean; // true for user-created
     createdAt: number;
+    detailedInstructions?: string; // Optional instructions for the user
 }
