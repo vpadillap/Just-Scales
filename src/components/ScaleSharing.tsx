@@ -146,14 +146,16 @@ export const ScaleImport: React.FC<ScaleImportProps> = ({ onImport, onClose }) =
                             </button>
                         )}
 
-                        <div className="relative">
-                            <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-slate-200"></div>
+                        {Capacitor.isNativePlatform() && (
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-slate-200"></div>
+                                </div>
+                                <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest">
+                                    <span className="px-3 bg-white text-slate-400">or paste text</span>
+                                </div>
                             </div>
-                            <div className="relative flex justify-center text-[10px] font-bold uppercase tracking-widest">
-                                <span className="px-3 bg-white text-slate-400">or paste text</span>
-                            </div>
-                        </div>
+                        )}
 
                         <textarea
                             value={jsonText}

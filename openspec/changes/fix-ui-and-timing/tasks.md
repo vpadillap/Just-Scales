@@ -10,6 +10,7 @@
     - [x] Import `isPlatform` from `@capacitor/core`.
     - [x] Conditional render: Only show `ScaleImport` scanner button if `isPlatform('hybrid')` (or `android`/`ios`).
     - [x] Ensure clipboard import is always visible or becomes default.
+    - [x] Hide "OR PASTE TEXT" divider on non-native platforms.
 
 ## 3. Verification
 - [-] **Timing**: Listen to a scale session. Verify gap is 1 beat (quarter note) instead of 2. (Skipped: Manual Audio Test)
