@@ -106,7 +106,7 @@ export const ScaleImport: React.FC<ScaleImportProps> = ({ onImport, onClose }) =
     }
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
+        <div className={`fixed inset-0 flex items-center justify-center p-4 z-50 backdrop-blur-sm ${scanning ? 'bg-transparent' : 'bg-black/50'}`}>
             {/* If scanning, show the scanner overlay fully */}
             {scanning ? (
                 <QRScanner

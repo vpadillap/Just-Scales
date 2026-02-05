@@ -69,6 +69,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError, onClose }
             // Make WebView transparent on Native to see Camera behind
             document.body.style.backgroundColor = 'transparent'
             document.documentElement.style.backgroundColor = 'transparent'
+            document.body.classList.add('scanning-active')
             // If there's a root div (e.g. #root) that has a background, we might need to set it too.
             // Assuming typical setup where body has the background color or root app does.
         }
@@ -85,6 +86,7 @@ export const QRScanner: React.FC<QRScannerProps> = ({ onScan, onError, onClose }
             if (isNative) {
                 document.body.style.backgroundColor = ''
                 document.documentElement.style.backgroundColor = ''
+                document.body.classList.remove('scanning-active')
             }
         }
     }, [onScan, onError])

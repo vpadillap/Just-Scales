@@ -8,6 +8,13 @@
     - [x] Remove `bg-black/50` from `QRScanner` root div (use `bg-transparent`).
     - [x] Restore styles on cleanup.
 
+## 2. Layering Fixes (New)
+- [x] Make `ScaleSharing.tsx` modal background transparent when scanning.
+- [x] Make Global App Background transparent when scanning.
+    - [x] Add `scanning-active` class to body in `QRScanner.tsx`.
+    - [x] Add CSS override in `index.css` to force `bg-surface-base` to transparent when `scanning-active` is present.
+    - [x] Verify `App.tsx` structure.
+
 ## 2. Verification
 - [x] Verify logic (transparency application).
 - [-] Build and Manual Test (Android). (Skipped: Requires Native Device)

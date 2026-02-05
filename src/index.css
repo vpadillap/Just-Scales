@@ -70,3 +70,12 @@ button {
 .bg-surface-base {
   @apply bg-slate-50;
 }
+
+/* 
+  QR Scanning Transparency Helper 
+  When body has 'scanning-active', force the main background to transparent
+  so the camera (behind webview) is visible.
+*/
+body.scanning-active .bg-surface-base {
+  background-color: transparent !important;
+}
