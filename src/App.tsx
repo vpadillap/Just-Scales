@@ -98,7 +98,7 @@ function App() {
         setShowScaleCreator(true)
       }}
     >
-      <div className="h-screen w-full flex flex-col bg-surface-base overflow-hidden">
+      <div id="main-app-content" className="h-screen w-full flex flex-col bg-surface-base overflow-hidden">
 
         {/* Top Area: Dashboard & Controls */}
         <div className="flex-1 flex flex-col min-h-0 overflow-hidden relative">

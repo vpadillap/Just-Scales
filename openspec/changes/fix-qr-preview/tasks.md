@@ -11,9 +11,14 @@
 ## 2. Layering Fixes (New)
 - [x] Make `ScaleSharing.tsx` modal background transparent when scanning.
 - [x] Make Global App Background transparent when scanning.
-    - [x] Add `scanning-active` class to body in `QRScanner.tsx`.
-    - [x] Add CSS override in `index.css` to force `bg-surface-base` to transparent when `scanning-active` is present.
-    - [x] Verify `App.tsx` structure.
+- [ ] **Ghost UI Fixes (Current)**:
+    - [x] Update `ScaleSharing.tsx`: Remove `backdrop-blur-sm` when scanning.
+    - [x] Update `App.tsx`: Add `id="main-app-content"` to the Dashboard container.
+    - [x] Update `index.css`:
+        - [x] Hide `#main-app-content` when `scanning-active`.
+        - [x] Hide `aside` (Sidebar) when `scanning-active`.
+        - [x] Hide `.app-drag-region` (TitleBar) when `scanning-active`.
+        - [x] Ensure `ScaleImport` remains visible.
 
 ## 2. Verification
 - [x] Verify logic (transparency application).

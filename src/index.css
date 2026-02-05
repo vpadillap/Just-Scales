@@ -79,3 +79,12 @@ button {
 body.scanning-active .bg-surface-base {
   background-color: transparent !important;
 }
+
+/* Hide UI elements that might obstruct the camera view or appear as 'ghosts' */
+body.scanning-active #main-app-content,
+body.scanning-active aside,
+body.scanning-active .app-drag-region {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
